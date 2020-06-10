@@ -421,7 +421,7 @@ function verify-randomly {
     # FIXME: Cleanup mount point.
 
     debug "Mounting repo at: $mount_point"
-    $restic "${restic_opts[@]}" mount "$mount_point" &>"$mount_output" &
+    mount "$mount_point" &>"$mount_output" &
 
     local attempts=0
     while [[ 1 ]]
