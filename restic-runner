@@ -159,14 +159,23 @@ function tag {
     fi
 }
 
+function snapshots {
+    # Returns the restic snapshots output
+
+    # Disable du
+    unset du
+
+    $restic "${restic_opts[@]}" snapshots \
+            --tag "$tag"
+}
+
 function snapshot-ids {
     # Return list of snapshot IDs
 
     # Disable du
     unset du
 
-    $restic "${restic_opts[@]}" snapshots \
-           --tag "$tag" \
+    snapshots \
         | head -n -2 \
         | tail -n +3 \
         | awk '/^[^ ]/ { print $1 }'

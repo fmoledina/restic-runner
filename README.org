@@ -252,6 +252,23 @@ Example:
   restic-runner --repo REPONAME mount ~/mnt/restic
 #+END_EXAMPLE
 
+**** =snapshots=
+
+Print the output of =restic snapshots=.
+
+Example:
+
+#+BEGIN_EXAMPLE
+  # Print all snapshots for the repo
+  restic-runner --repo REPONAME snapshots
+
+  # Print snapshots for the tag configured in this set
+  restic-runner --repo REPONAME --set SETNAME snapshots
+
+  # Print snapshots for this tag
+  restic-runner --repo REPONAME --tag TAG snapshots
+#+END_EXAMPLE
+
 **** =snapshot-ids=
 
 Print a list of snapshot IDs, one per line.
