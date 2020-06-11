@@ -3,6 +3,7 @@ This is a fork of [[https://github.com/alphapapa/restic-runner][alphapapa/restic
 
 +  =--config= flag for defining custom config directory outside of script
 +  =restic= and =restic_opts= setting for custom restic binary locations and restic options
++  =snapshots= command mapped to `restic snapshots` output
 
 * restic-runner
 
@@ -156,6 +157,7 @@ Combined with the =diff= command and the =--added= filter, this makes it easy to
         -  [[#expire][expire]]
         -  [[#init][init]]
         -  [[#mount-path][mount PATH]]
+        -  [[#snapshots][snapshots]]
         -  [[#snapshot-ids][snapshot-ids]]
         -  [[#verify-randomly-n][verify-randomly {N}]]
 
