@@ -346,10 +346,17 @@ function diff {
     $restic "${restic_opts[@]}" diff $snapshot1 $snapshot2 | $filter
 }
 
+function forget {
+    log "FORGETTING WITHOUT PRUNING..."
+
+    $restic "${restic_opts[@]}" forget \
+            $(tag) \
+            ${keep_policy[@]}
+}
+
 function expire {
     log "FORGETTING AND PRUNING..."
 
-    # TODO: Make prune optional or separate.
     $restic "${restic_opts[@]}" forget \
             $(tag) \
             --prune ${keep_policy[@]}
