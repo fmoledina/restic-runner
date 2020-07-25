@@ -64,6 +64,7 @@ It may also *define* these variables:
 +  =keep_policy=: A Bash array containing a list of =--keep-X= options.
 +  =restic=: Custom location for restic if not in =$PATH=.
 +  =restic_opts=: Additional options to pass to restic.
++  =restic_hostname=: A custom hostname to use for your backups - defaults to the hostname of the machine
 
 Example:
 

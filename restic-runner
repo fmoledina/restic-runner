@@ -159,6 +159,15 @@ function tag {
     fi
 }
 
+function host {
+    # Echo "--hostname HOSTNAME" if restic_hostname is set, otherwise nothing.
+
+    if [[ ! -z "$restic_hostname" ]]
+    then
+        echo "--host $restic_hostname"
+    fi
+}
+
 function snapshots {
     # Returns the restic snapshots output
 
@@ -166,7 +175,8 @@ function snapshots {
     unset du
 
     $restic "${restic_opts[@]}" snapshots \
-            --tag "$tag"
+            $(host) \
+            $(tag)
 }
 
 function snapshot-ids {
@@ -281,7 +291,8 @@ function backup {
             --exclude-caches \
             $(exclude_if_present) \
             --exclude-file "$exclude_file" \
-            --tag "$tag" \
+            $(host) \
+            $(tag) \
             "${include_paths[@]}"
 }
 function check {
@@ -351,6 +362,7 @@ function forget {
 
     $restic "${restic_opts[@]}" forget \
             $(tag) \
+            $(host) \
             ${keep_policy[@]}
 }
 
@@ -359,6 +371,7 @@ function expire {
 
     $restic "${restic_opts[@]}" forget \
             $(tag) \
+            $(host) \
             --prune ${keep_policy[@]}
 }
 function passthrough {
@@ -565,6 +578,7 @@ debug "Rest: ${rest[@]}"
 [[ $config ]] || config=~/.config/backup/restic
 [[ $restic ]] || restic=/usr/local/bin/restic
 [[ $restic_opts ]] || restic_opts=()
+[[ $restic_hostname ]] || restic_hostname=$(hostname)
 
 # * Include repo and set files
 
