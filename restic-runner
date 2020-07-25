@@ -277,12 +277,12 @@ function backup {
     trap cleanup EXIT INT TERM
 
     $restic "${restic_opts[@]}" backup \
-           --one-file-system \
-           --exclude-caches \
-           $(exclude_if_present) \
-           --exclude-file "$exclude_file" \
-           --tag "$tag" \
-           "${include_paths[@]}"
+            --one-file-system \
+            --exclude-caches \
+            $(exclude_if_present) \
+            --exclude-file "$exclude_file" \
+            --tag "$tag" \
+            "${include_paths[@]}"
 }
 function check {
     log "CHECKING..."
@@ -351,8 +351,8 @@ function expire {
 
     # TODO: Make prune optional or separate.
     $restic "${restic_opts[@]}" forget \
-           $(tag) \
-           --prune ${keep_policy[@]}
+            $(tag) \
+            --prune ${keep_policy[@]}
 }
 function passthrough {
     # Pass command through to restic.
