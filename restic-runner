@@ -374,6 +374,13 @@ function expire {
             $(host) \
             --prune ${keep_policy[@]}
 }
+
+function prune {
+    log "PRUNING ENTIRE REPO..."
+
+    $restic "${restic_opts[@]}" prune \
+}
+
 function passthrough {
     # Pass command through to restic.
     debug "Running: restic ${rest[@]}"
