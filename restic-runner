@@ -378,7 +378,7 @@ function expire {
 function prune {
     log "PRUNING ENTIRE REPO..."
 
-    $restic "${restic_opts[@]}" prune \
+    $restic "${restic_opts[@]}" prune
 }
 
 function passthrough {
